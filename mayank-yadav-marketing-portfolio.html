@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayank Yadav — Growth Marketer & Content Strategist</title>
+  <meta name="description" content="Mayank Yadav is a freelance growth marketer helping brands turn ads, content, and retention into measurable results." />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+       Edit colors, fonts, spacing here
+    ============================================================ */
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-display: 'Georgia', 'Times New Roman', serif;
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+
+      --transition: 200ms ease;
+
+      /* LIGHT THEME */
+      --bg:         #f8f7f4;
+      --bg-card:    #ffffff;
+      --bg-subtle:  #f0ede8;
+      --border:     #e2ddd6;
+      --text:       #1a1917;
+      --text-muted: #6b6560;
+      --accent:     #1a1917;
+      --accent-inv: #f8f7f4;
+      --tag-bg:     #e8e4de;
+      --tag-text:   #4a4540;
+    }
+
+    [data-theme="dark"] {
+      --bg:         #0f0f0e;
+      --bg-card:    #181816;
+      --bg-subtle:  #1e1e1c;
+      --border:     #2a2a28;
+      --text:       #f0ede8;
+      --text-muted: #8a857e;
+      --accent:     #f0ede8;
+      --accent-inv: #0f0f0e;
+      --tag-bg:     #252522;
+      --tag-text:   #b0aa9e;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
+
+    .display-xl {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .display-lg {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 100px 0; }
+
+    .section-header { margin-bottom: 64px; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: var(--bg);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ============================================================
+       LOGO — Edit SVG initials here
+    ============================================================ */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+
+    .theme-toggle:hover { color: var(--text); border-color: var(--text-muted); }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 24px;
+        gap: 20px;
+      }
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-inv);
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-muted);
+      background: var(--bg-subtle);
+    }
+
+    .btn-sm {
+      padding: 9px 18px;
+      font-size: 0.82rem;
+    }
+
+    /* ============================================================
+       HERO SECTION
+       Edit: headline, subheading, CTA labels, availability text
+    ============================================================ */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 120px;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-headline { margin-bottom: 24px; }
+
+    .hero-headline .line-accent {
+      /* The italic/styled word in headline — edit as needed */
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat { }
+    .hero-stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+       Edit: bio text, MBA info, skills list
+    ============================================================ */
+    #about { background: var(--bg-subtle); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .about-text p strong { color: var(--text); }
+
+    .about-sidebar { }
+
+    .cred-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .cred-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .cred-item h4 { font-size: 0.9rem; margin-bottom: 2px; }
+    .cred-item p { font-size: 0.8rem; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ============================================================
+       SERVICES SECTION
+       Edit: service names, descriptions, tags
+    ============================================================ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .service-item {
+      background: var(--bg-card);
+      padding: 32px 28px;
+      transition: background var(--transition);
+    }
+
+    .service-item:hover { background: var(--bg-subtle); }
+
+    .service-num {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .service-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .service-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       RESULTS SECTION
+    ============================================================ */
+    #results { background: var(--bg-subtle); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    .result-card.large {
+      grid-column: span 2;
+    }
+
+    .result-card h3 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .result-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .result-card .result-context {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+      opacity: 0.65;
+    }
+
+    @media (max-width: 680px) {
+      .results-grid { grid-template-columns: 1fr; }
+      .result-card.large { grid-column: span 1; }
+    }
+
+    /* ============================================================
+       CASE STUDIES SECTION
+       Edit: problem, approach, outcome, skills for each case study
+    ============================================================ */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .case-card:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-2px);
+    }
+
+    .case-card-header {
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .case-card h3 {
+      font-size: 1.1rem;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .case-type-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .case-card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .case-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .case-card-body p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .case-outcome-text {
+      color: var(--text) !important;
+      font-weight: 500 !important;
+    }
+
+    .case-card-footer {
+      padding: 20px 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .case-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .case-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       WHY ME SECTION
+    ============================================================ */
+    #why { background: var(--bg-subtle); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-headline { margin-bottom: 24px; }
+
+    .why-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+
+    .why-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .why-list .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--text-muted);
+    }
+
+    .why-list li p { font-size: 0.925rem; color: var(--text-muted); }
+    .why-list li p strong { color: var(--text); }
+
+    .why-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+    }
+
+    .why-visual-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .skill-bar-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .skill-bar-item { }
+    .skill-bar-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+    }
+    .skill-bar-label { font-weight: 500; }
+    .skill-bar-pct { color: var(--text-muted); }
+    .skill-bar-track {
+      height: 4px;
+      background: var(--bg-subtle);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--text);
+      border-radius: 100px;
+      transition: width 1s ease;
+      width: 0;
+    }
+
+    @media (max-width: 768px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       TESTIMONIALS SECTION
+       Edit: placeholders with real testimonials when you have them
+    ============================================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      position: relative;
+    }
+
+    .testimonial-card.placeholder {
+      border-style: dashed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .placeholder-icon { color: var(--border); }
+    .placeholder-text { font-size: 0.82rem; color: var(--text-muted); }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .testimonial-name { font-size: 0.875rem; font-weight: 600; }
+    .testimonial-role { font-size: 0.78rem; color: var(--text-muted); }
+
+    .testimonial-note {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+       Edit: headline, email, LinkedIn URL, form fields
+    ============================================================ */
+    #contact { background: var(--bg-subtle); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left h2 { margin-bottom: 16px; }
+
+    .contact-left p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+
+    .contact-link:hover {
+      border-color: var(--text-muted);
+      background: var(--bg-subtle);
+    }
+
+    .contact-link-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .contact-link span { flex: 1; }
+    .contact-link .arrow { color: var(--text-muted); font-size: 1.1rem; }
+
+    /* Contact form */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 12px 14px;
+      transition: border-color var(--transition);
+      outline: none;
+      width: 100%;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--text-muted);
+    }
+
+    .form-group textarea { min-height: 120px; }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .form-note { font-size: 0.78rem; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL ANIMATION
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- LOGO: Edit your name/initials display here -->
+        <a href="#hero" class="logo">
+          <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="MY logo">
+            <rect width="36" height="36" rx="8" fill="currentColor" opacity="0.1"/>
+            <path d="M7 26V10L13.5 10L18 19.5L22.5 10L29 10V26H25V15.5L20 26H16L11 15.5V26H7Z" fill="currentColor"/>
+          </svg>
+          Mayank Yadav
+        </a>
+
+        <!-- Nav links — edit labels and hrefs -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#case-studies">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+            <!-- Sun icon (shown in dark mode) -->
+            <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <!-- Moon icon (shown in light mode) -->
+            <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+
+          <a href="mailto:mynk24012@gmail.com" class="btn btn-primary btn-sm">Book a Call</a>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       EDIT: headline, subheadline, stat numbers, availability text
+  ============================================================ -->
+  <section id="hero">
+    <div class="container">
+
+      <!-- Availability badge — edit text here -->
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        Available for new projects · Based in India
+      </div>
+
+      <!-- Main headline — edit to taste -->
+      <h1 class="display-xl hero-headline">
+        Ads, content<br />
+        and retention<br />
+        that <span class="line-accent">actually</span> convert.
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-sub">
+        I'm Mayank Yadav — a growth marketer and content strategist helping founders, startups, and finance brands turn attention into measurable business outcomes.
+      </p>
+
+      <!-- CTAs — edit button labels and links -->
+      <div class="hero-ctas">
+        <a href="#case-studies" class="btn btn-primary">
+          View My Work
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:mynk24012@gmail.com" class="btn btn-outline">
+          Book a Strategy Call
+        </a>
+      </div>
+
+      <!-- Hero stats — edit numbers and labels -->
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <div class="hero-stat-num">1M+</div>
+          <div class="hero-stat-label">Views driven in 15 days</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3+</div>
+          <div class="hero-stat-label">Channels of marketing expertise</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">MBA</div>
+          <div class="hero-stat-label">Marketing & Finance</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Full</div>
+          <div class="hero-stat-label">Funnel ownership</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       ABOUT SECTION
+       EDIT: bio paragraphs, credentials list
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">About</p>
+        <h2 class="display-lg">The marketer behind<br />the numbers.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm <strong>Mayank Yadav</strong>, a growth marketer, content strategist, and content writer based in India. I hold an <strong>MBA in Marketing and Finance</strong>, which means I approach campaigns the same way a good finance mind approaches a balance sheet — every rupee spent needs a clear return story.
+          </p>
+          <p>
+            My work sits at the intersection of <strong>paid performance marketing</strong> (Google Ads, Meta Ads), <strong>retention and lifecycle</strong> (WebEngage), and <strong>content-led growth</strong>. I've worked across acquisition, engagement, and retention — not just one slice of the funnel.
+          </p>
+          <p>
+            I understand that growth isn't just traffic and impressions. It's the content that earns trust, the ad that converts at 3 AM, the retention flow that brings someone back. I focus on all three — and on connecting them so they actually compound.
+          </p>
+          <p>
+            I work best with <strong>founders, early-stage startups, finance brands, coaches, and personal brand builders</strong> who want sharp, honest marketing — not inflated agency language or vanity metrics.
+          </p>
+          <a href="mailto:mynk24012@gmail.com" class="btn btn-outline" style="margin-top: 8px;">Let's talk →</a>
+        </div>
+
+        <!-- Credentials sidebar — edit each item here -->
+        <div class="about-sidebar reveal">
+
+          <div class="cred-item">
+            <div class="cred-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <div>
+              <h4>MBA — Marketing & Finance</h4>
+              <p>Dual specialisation — strategic and quantitative thinking combined</p>
+            </div>
+          </div>
+
+          <div class="cred-item">
+            <div class="cred-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Full-Funnel Ownership</h4>
+              <p>Acquisition → Engagement → Retention — no handoff gaps</p>
+            </div>
+          </div>
+
+          <div class="cred-item">
+            <div class="cred-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Performance + Content</h4>
+              <p>Paid ads precision with content-led growth — rare to find both</p>
+            </div>
+          </div>
+
+          <div class="cred-item">
+            <div class="cred-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Finance Content Specialist</h4>
+              <p>Trust-building content for finance brands — complex made clear</p>
+            </div>
+          </div>
+
+          <div class="cred-item" style="border-bottom: none;">
+            <div class="cred-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Creator-Led Growth</h4>
+              <p>Worked on content-first strategies that scale views and convert</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       SERVICES SECTION
+       EDIT: service title, description, tags for each card
+  ============================================================ -->
+  <section id="services">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">Services</p>
+        <h2 class="display-lg">What I do — and<br />why it works together.</h2>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Service 1: Google Ads -->
+        <div class="service-item reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </div>
+          <h3>Google Ads</h3>
+          <p>Search, display, and performance campaigns built to acquire the right people at the right cost. I handle keyword strategy, ad copy, bidding, and reporting — with a focus on ROAS, not just clicks.</p>
+          <div class="service-tags">
+            <span class="tag">Search Campaigns</span>
+            <span class="tag">Display</span>
+            <span class="tag">ROAS Focused</span>
+            <span class="tag">Keyword Strategy</span>
+          </div>
+        </div>
+
+        <!-- Service 2: Meta Ads -->
+        <div class="service-item reveal">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </div>
+          <h3>Meta Ads</h3>
+          <p>Facebook and Instagram campaigns with creative strategy baked in. I think through targeting, creative direction, and funnel structure — not just budget allocation. Awareness, retargeting, and conversion flows.</p>
+          <div class="service-tags">
+            <span class="tag">Facebook</span>
+            <span class="tag">Instagram</span>
+            <span class="tag">Creative Strategy</span>
+            <span class="tag">Retargeting</span>
+          </div>
+        </div>
+
+        <!-- Service 3: WebEngage / Retention -->
+        <div class="service-item reveal">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <h3>WebEngage & Retention</h3>
+          <p>Lifecycle marketing through push, email, and in-app flows using WebEngage. I design journeys that reduce churn, re-engage inactive users, and convert trial-to-paid — where most marketing money gets wasted.</p>
+          <div class="service-tags">
+            <span class="tag">WebEngage</span>
+            <span class="tag">Push Notifications</span>
+            <span class="tag">Email Journeys</span>
+            <span class="tag">Churn Reduction</span>
+          </div>
+        </div>
+
+        <!-- Service 4: Content Strategy -->
+        <div class="service-item reveal">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3>Content Strategy</h3>
+          <p>Content that has a job to do — not just a publishing schedule. I build strategies that connect SEO, brand trust, and conversion goals into a coherent system. From topic selection to distribution thinking.</p>
+          <div class="service-tags">
+            <span class="tag">Content Planning</span>
+            <span class="tag">SEO Thinking</span>
+            <span class="tag">Distribution</span>
+            <span class="tag">Brand Narrative</span>
+          </div>
+        </div>
+
+        <!-- Service 5: Content Writing -->
+        <div class="service-item reveal">
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3>Content Writing</h3>
+          <p>Long-form articles, landing page copy, ad scripts, email sequences, and social content. Sharp, human writing that earns attention and moves people — not padding for word counts or keyword stuffing.</p>
+          <div class="service-tags">
+            <span class="tag">Long-form</span>
+            <span class="tag">Landing Pages</span>
+            <span class="tag">Ad Copy</span>
+            <span class="tag">Email</span>
+          </div>
+        </div>
+
+        <!-- Service 6: Finance Content -->
+        <div class="service-item reveal">
+          <div class="service-num">06</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Finance Content</h3>
+          <p>Specialised content for fintech, wealth management, investment, and BFSI brands. My MBA background in Finance means I can write accurately, simplify complex concepts, and build credibility that generic writers can't.</p>
+          <div class="service-tags">
+            <span class="tag">Fintech</span>
+            <span class="tag">BFSI</span>
+            <span class="tag">Investment Content</span>
+            <span class="tag">Trust Building</span>
+          </div>
+        </div>
+
+        <!-- Service 7: Growth Marketing / Funnel -->
+        <div class="service-item reveal" style="grid-column: span 1;">
+          <div class="service-num">07</div>
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+            </svg>
+          </div>
+          <h3>Growth & Funnel Thinking</h3>
+          <p>Cross-channel growth strategy that ties acquisition, activation, and retention into one coherent plan. I map user journeys, find conversion leaks, and recommend changes that compound — not just campaign hacks.</p>
+          <div class="service-tags">
+            <span class="tag">AARRR Framework</span>
+            <span class="tag">Conversion Optimisation</span>
+            <span class="tag">Funnel Mapping</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       RESULTS / PROOF SECTION
+       EDIT: result numbers, descriptions, context notes
+  ============================================================ -->
+  <section id="results">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">Results & Proof</p>
+        <h2 class="display-lg">What the work<br />has produced.</h2>
+      </div>
+
+      <div class="results-grid">
+
+        <div class="result-card large reveal">
+          <h3>1 Million+</h3>
+          <p>Views driven for a content channel within 15 days — not through luck, but through a deliberate creator-led growth strategy that combined content format selection, publishing cadence, and distribution thinking.</p>
+          <p class="result-context">Note: growth validated from actual campaign work. Channel name withheld for client privacy.</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>Conversions</h3>
+          <p>Achieved measurable conversions from the content growth — not just reach. Views were converted into action through aligned call-to-actions and a clear post-click journey.</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>Full Funnel</h3>
+          <p>Managed acquisition to retention across paid and organic — Google Ads, Meta, and WebEngage lifecycle campaigns running in parallel on the same brand.</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>Finance Expertise</h3>
+          <p>Created finance content that builds trust, not just traffic. MBA in Finance means I understand the subject — which makes the content sharper and more credible than generalist writers.</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>Content → Business</h3>
+          <p>Strong track record of turning content output into business outcomes — not just publishing volume. Strategy, not just execution.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       CASE STUDIES SECTION
+       EDIT: problem, approach, outcome, skills for each project
+  ============================================================ -->
+  <section id="case-studies">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">Case Studies</p>
+        <h2 class="display-lg">Three projects.<br />Real problems solved.</h2>
+      </div>
+
+      <div class="case-grid">
+
+        <!-- CASE STUDY 1 — Edit all fields here -->
+        <div class="case-card reveal">
+          <div class="case-card-header">
+            <p class="case-num">Case 01</p>
+            <h3>Finance Content Growth Campaign</h3>
+            <span class="case-type-tag">Content Strategy · Finance</span>
+          </div>
+          <div class="case-card-body">
+            <div>
+              <p class="case-section-label">Problem</p>
+              <p>A finance brand had technically accurate content that wasn't gaining traction. Low engagement, low trust signals, and no clear narrative thread connecting their content to their core offer.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Approach</p>
+              <p>Rebuilt the content framework around audience pain points rather than product features. Simplified financial concepts for a non-expert audience, introduced a consistent brand voice, and aligned content topics to search and purchase intent.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Outcome</p>
+              <p class="case-outcome-text">Improved content engagement and organic reach. Content began converting readers into enquiries — not just informing them. Trust signals strengthened across the brand touchpoints.</p>
+            </div>
+          </div>
+          <div class="case-card-footer">
+            <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
+            <div class="case-skills">
+              <span class="tag">Finance Content</span>
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Brand Voice</span>
+              <span class="tag">SEO Thinking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE STUDY 2 — Edit all fields here -->
+        <div class="case-card reveal">
+          <div class="case-card-header">
+            <p class="case-num">Case 02</p>
+            <h3>Paid Ads & Conversion Improvement</h3>
+            <span class="case-type-tag">Google Ads · Meta Ads</span>
+          </div>
+          <div class="case-card-body">
+            <div>
+              <p class="case-section-label">Problem</p>
+              <p>A brand was running paid campaigns with decent traffic but poor conversion rates. Ad spend was generating clicks that didn't result in meaningful business outcomes — a classic top-of-funnel trap.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Approach</p>
+              <p>Audited the full paid-to-landing-page journey. Tightened ad copy and audience targeting on Meta, restructured Google Search campaigns around purchase-intent keywords, and aligned landing page messaging with ad promises to reduce friction.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Outcome</p>
+              <p class="case-outcome-text">Improved conversion rate from paid traffic. More budget was redirected toward performing segments, improving overall ROAS without increasing total spend.</p>
+            </div>
+          </div>
+          <div class="case-card-footer">
+            <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
+            <div class="case-skills">
+              <span class="tag">Google Ads</span>
+              <span class="tag">Meta Ads</span>
+              <span class="tag">Conversion Optimisation</span>
+              <span class="tag">Ad Copy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE STUDY 3 — Edit all fields here -->
+        <div class="case-card reveal">
+          <div class="case-card-header">
+            <p class="case-num">Case 03</p>
+            <h3>Creator-Led Content Growth Sprint</h3>
+            <span class="case-type-tag">Content Growth · Distribution</span>
+          </div>
+          <div class="case-card-body">
+            <div>
+              <p class="case-section-label">Problem</p>
+              <p>A content channel needed rapid, sustainable growth without relying on paid amplification. Organic reach was flat, content wasn't being discovered, and there was no playbook for scaling views.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Approach</p>
+              <p>Developed a creator-led growth strategy — selecting high-potential content formats, building a consistent publishing cadence, and optimising each piece for platform-specific discovery. Distribution was treated as a discipline, not an afterthought.</p>
+            </div>
+            <div>
+              <p class="case-section-label">Outcome</p>
+              <p class="case-outcome-text">1 million+ views achieved within 15 days. Growth was paired with conversion-focused content that turned views into tangible business outcomes — not just vanity numbers.</p>
+            </div>
+          </div>
+          <div class="case-card-footer">
+            <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
+            <div class="case-skills">
+              <span class="tag">Creator Strategy</span>
+              <span class="tag">Content Growth</span>
+              <span class="tag">Distribution</span>
+              <span class="tag">Format Strategy</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       WHY WORK WITH ME SECTION
+       EDIT: headline, body text, list items, skill bar labels/percentages
+  ============================================================ -->
+  <section id="why">
+    <div class="container">
+
+      <div class="why-grid">
+
+        <div class="reveal">
+          <p class="section-label">Why Me</p>
+          <h2 class="display-lg why-headline">Performance, content, retention — not just one.</h2>
+          <p class="why-text">Most marketers operate in a lane. Paid specialists don't think about content. Content writers don't understand ad economics. Retention folks rarely touch acquisition. I work across all three — which is where the real compounding happens.</p>
+
+          <!-- Edit each point here -->
+          <ul class="why-list">
+            <li>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p><strong>MBA-trained thinking.</strong> I don't just run campaigns — I understand the business case for every decision, including budget allocation, CAC, LTV, and ROI framing.</p>
+            </li>
+            <li>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p><strong>Content + conversion together.</strong> I understand that the best-performing ad is often a piece of content. I build things that work both ways.</p>
+            </li>
+            <li>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p><strong>Finance domain confidence.</strong> For fintech and BFSI brands, I'm one of the few marketers who can write accurate, trustworthy content without needing a fact-check on every line.</p>
+            </li>
+            <li>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p><strong>No fluff, no filler.</strong> I don't do monthly decks full of screenshots. I focus on what moves the number — and I communicate clearly about what I'm doing and why.</p>
+            </li>
+            <li>
+              <div class="check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p><strong>Speed matters.</strong> I've driven 1M+ views in 15 days. I know how to move fast without sacrificing quality or strategic direction.</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill visual bars — edit skill names and percentages here -->
+        <div class="why-visual reveal">
+          <p class="why-visual-label">Skill Depth</p>
+          <div class="skill-bar-list">
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">Google & Meta Ads</span>
+                <span class="skill-bar-pct">90%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">Content Strategy</span>
+                <span class="skill-bar-pct">92%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">Content Writing</span>
+                <span class="skill-bar-pct">95%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">Finance Content</span>
+                <span class="skill-bar-pct">88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">WebEngage / Retention</span>
+                <span class="skill-bar-pct">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-label">Growth Strategy</span>
+                <span class="skill-bar-pct">87%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       TESTIMONIALS SECTION
+       EDIT: replace placeholder cards with real testimonials.
+       Copy the full .testimonial-card block (non-placeholder version) below.
+  ============================================================ -->
+  <section id="testimonials">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">Testimonials</p>
+        <h2 class="display-lg">What clients say.</h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- PLACEHOLDER 1 — Replace with real testimonial when available -->
+        <div class="testimonial-card placeholder reveal">
+          <div class="placeholder-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <p class="placeholder-text">Testimonial from a founder or client coming soon.</p>
+        </div>
+
+        <!-- PLACEHOLDER 2 — Replace with real testimonial when available -->
+        <div class="testimonial-card placeholder reveal">
+          <div class="placeholder-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <p class="placeholder-text">Testimonial from a finance brand or content client coming soon.</p>
+        </div>
+
+        <!-- PLACEHOLDER 3 — Replace with real testimonial when available -->
+        <div class="testimonial-card placeholder reveal">
+          <div class="placeholder-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <p class="placeholder-text">Testimonial from a startup or personal brand coming soon.</p>
+        </div>
+
+        <!--
+        REAL TESTIMONIAL TEMPLATE — Uncomment and fill in when you have one:
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">"Your testimonial text goes here. Keep it specific and outcome-focused — not just 'great to work with'."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AB</div>
+            <div>
+              <p class="testimonial-name">Client Name</p>
+              <p class="testimonial-role">Founder, Company Name</p>
+            </div>
+          </div>
+        </div>
+        -->
+
+      </div>
+
+      <p class="testimonial-note reveal">Working on collecting formal testimonials. References available on request — reach out via email.</p>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
+       CONTACT SECTION
+       EDIT: headline, subtext, email, LinkedIn URL, form fields
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <div class="reveal">
+          <p class="section-label">Contact</p>
+          <h2 class="display-lg" style="margin-bottom: 16px;">Got a project?<br />Let's talk.</h2>
+          <p>I'm available for freelance engagements — one-off projects, ongoing retainers, and strategy consultations. If you're a founder, startup, finance brand, or personal brand looking for sharp, conversion-focused marketing, send me a note.</p>
+
+          <!-- EDIT: Contact links — email and LinkedIn -->
+          <div class="contact-links">
+            <a href="mailto:mynk24012@gmail.com" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <span>mynk24012@gmail.com</span>
+              <span class="arrow">↗</span>
+            </a>
+
+            <!-- EDIT: Your LinkedIn URL here -->
+            <a href="https://www.linkedin.com/in/mayank-y" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <div class="contact-link-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+              </div>
+              <span>linkedin.com/in/mayank-y</span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal">
+          <!-- EDIT: Form action — replace with your form handler (Formspree, etc.) or keep as UI -->
+          <form class="contact-form" id="contactForm" action="mailto:mynk24012@gmail.com" method="get">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Rahul / Sarah" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="project-type">What do you need?</label>
+              <select id="project-type" name="project-type">
+                <option value="">Select a service</option>
+                <option value="google-ads">Google Ads</option>
+                <option value="meta-ads">Meta Ads</option>
+                <option value="retention">WebEngage / Retention</option>
+                <option value="content-strategy">Content Strategy</option>
+                <option value="content-writing">Content Writing</option>
+                <option value="finance-content">Finance Content</option>
+                <option value="growth">Growth Strategy</option>
+                <option value="other">Other / Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell me about your project</label>
+              <textarea id="message" name="message" placeholder="What's the problem, what have you tried, what would success look like?" required></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary">
+                Send Message
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <p class="form-note">Or email directly: mynk24012@gmail.com</p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       EDIT: copyright year, footer links
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2025 Mayank Yadav. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="mailto:mynk24012@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/mayank-y" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="#hero">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       Handles: dark/light toggle, mobile menu, scroll animations,
+       nav scroll effect, skill bar animation
+  ============================================================ -->
+  <script>
+    // ---- Dark / Light Mode Toggle ----
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Load saved preference or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // ---- Mobile Menu ----
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // ---- Nav Scroll Effect ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ---- Scroll Reveal Animation ----
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings slightly
+          const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+          let delay = 0;
+          siblings.forEach((sib, idx) => { if (sib === entry.target) delay = idx * 60; });
+          setTimeout(() => entry.target.classList.add('visible'), Math.min(delay, 240));
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ---- Skill Bar Animation ----
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const width = bar.getAttribute('data-width');
+          setTimeout(() => { bar.style.width = width + '%'; }, 200);
+          barObserver.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    skillBars.forEach(bar => barObserver.observe(bar));
+
+    // ---- Contact Form (basic UX) ----
+    // If you want to use a real form handler like Formspree, replace the form's
+    // action attribute: action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+    // and remove the mailto action. The form below shows a thank-you message.
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+      // Remove this block if using a real form handler
+      // Currently falls through to mailto: action
+    });
+  </script>
+
+</body>
+</html>
