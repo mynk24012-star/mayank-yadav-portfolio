@@ -885,6 +885,104 @@
     }
 
     /* ============================================================
+       EXPERIENCE SECTION
+    ============================================================ */
+    #experience { background: var(--bg-subtle); }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    .exp-card-header {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-company {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .exp-period {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exp-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .exp-list li::before {
+      content: '→';
+      color: var(--text-muted);
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 0.75rem;
+    }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .edu-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    .edu-content h4 { font-size: 1rem; margin-bottom: 4px; }
+    .edu-content p { font-size: 0.85rem; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .experience-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
        FOOTER
     ============================================================ */
     footer {
@@ -964,6 +1062,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#results">Results</a></li>
           <li><a href="#case-studies">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -1017,7 +1116,7 @@
 
       <!-- Subheadline -->
       <p class="hero-sub">
-        I'm Mayank Yadav — a growth marketer and content strategist helping founders, startups, and finance brands turn attention into measurable business outcomes.
+        I'm Mayank Yadav — a Digital Marketing Executive and content strategist helping WealthTech and fintech brands grow from awareness to retention.
       </p>
 
       <!-- CTAs — edit button labels and links -->
@@ -1034,20 +1133,20 @@
       <!-- Hero stats — edit numbers and labels -->
       <div class="hero-meta">
         <div class="hero-stat">
-          <div class="hero-stat-num">1M+</div>
-          <div class="hero-stat-label">Views driven in 15 days</div>
+          <div class="hero-stat-num">3.2x</div>
+          <div class="hero-stat-label">Average ROAS on Meta Ads</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">3+</div>
-          <div class="hero-stat-label">Channels of marketing expertise</div>
+          <div class="hero-stat-num">15K+</div>
+          <div class="hero-stat-label">Newsletter subscribers</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">MBA</div>
-          <div class="hero-stat-label">Marketing & Finance</div>
+          <div class="hero-stat-num">40K+</div>
+          <div class="hero-stat-label">LinkedIn & social impressions</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">Full</div>
-          <div class="hero-stat-label">Funnel ownership</div>
+          <div class="hero-stat-num">15</div>
+          <div class="hero-stat-label">WebEngage lifecycle flows built</div>
         </div>
       </div>
 
@@ -1071,16 +1170,19 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I'm <strong>Mayank Yadav</strong>, a growth marketer, content strategist, and content writer based in India. I hold an <strong>MBA in Marketing and Finance</strong>, which means I approach campaigns the same way a good finance mind approaches a balance sheet — every rupee spent needs a clear return story.
+            I'm <strong>Mayank Yadav</strong>, a Digital Marketing Executive at <strong>Enrich Money</strong> — a WealthTech and trading platform based in Bengaluru.
           </p>
           <p>
-            My work sits at the intersection of <strong>paid performance marketing</strong> (Google Ads, Meta Ads), <strong>retention and lifecycle</strong> (WebEngage), and <strong>content-led growth</strong>. I've worked across acquisition, engagement, and retention — not just one slice of the funnel.
+            I manage the full marketing funnel: from <strong>performance campaigns on Meta Ads</strong> (managing ₹1.5L/month budget with 3.2x ROAS) to <strong>automated user journeys on WebEngage</strong> (15 lifecycle touchpoints) to content that drives real organic reach.
           </p>
           <p>
-            I understand that growth isn't just traffic and impressions. It's the content that earns trust, the ad that converts at 3 AM, the retention flow that brings someone back. I focus on all three — and on connecting them so they actually compound.
+            I also run <strong>'The Chai Break With Mayank'</strong> — a daily finance newsletter with 15,000+ subscribers and a 35% open rate.
           </p>
           <p>
-            I work best with <strong>founders, early-stage startups, finance brands, coaches, and personal brand builders</strong> who want sharp, honest marketing — not inflated agency language or vanity metrics.
+            MBA in Finance & Marketing from Lovely Professional University. I understand markets, investor psychology, and how to turn complex financial concepts into content that actually converts.
+          </p>
+          <p>
+            If you work in <strong>fintech, WealthTech, or growth marketing</strong> — let's talk.
           </p>
           <a href="mailto:mynk24012@gmail.com" class="btn btn-outline" style="margin-top: 8px;">Let's talk →</a>
         </div>
@@ -1095,8 +1197,8 @@
               </svg>
             </div>
             <div>
-              <h4>MBA — Marketing & Finance</h4>
-              <p>Dual specialisation — strategic and quantitative thinking combined</p>
+              <h4>MBA — Finance & Marketing</h4>
+              <p>Lovely Professional University, 2023–2025</p>
             </div>
           </div>
 
@@ -1107,8 +1209,8 @@
               </svg>
             </div>
             <div>
-              <h4>Full-Funnel Ownership</h4>
-              <p>Acquisition → Engagement → Retention — no handoff gaps</p>
+              <h4>Enrich Money — WealthTech Platform</h4>
+              <p>Digital Marketing Executive · Dec 2025 – Present · Bengaluru</p>
             </div>
           </div>
 
@@ -1119,8 +1221,8 @@
               </svg>
             </div>
             <div>
-              <h4>Performance + Content</h4>
-              <p>Paid ads precision with content-led growth — rare to find both</p>
+              <h4>3.2x ROAS · ₹1.5L/month Meta Ads</h4>
+              <p>Managing full performance budget with investor-intent targeting</p>
             </div>
           </div>
 
@@ -1131,8 +1233,8 @@
               </svg>
             </div>
             <div>
-              <h4>Finance Content Specialist</h4>
-              <p>Trust-building content for finance brands — complex made clear</p>
+              <h4>The Chai Break With Mayank</h4>
+              <p>Daily finance newsletter — 15K+ subscribers, 35% open rate</p>
             </div>
           </div>
 
@@ -1144,8 +1246,8 @@
               </svg>
             </div>
             <div>
-              <h4>Creator-Led Growth</h4>
-              <p>Worked on content-first strategies that scale views and convert</p>
+              <h4>15 WebEngage Lifecycle Flows</h4>
+              <p>Onboarding, re-engagement, and retention journeys for trading platform</p>
             </div>
           </div>
 
@@ -1319,29 +1421,51 @@
       <div class="results-grid">
 
         <div class="result-card large reveal">
-          <h3>1 Million+</h3>
-          <p>Views driven for a content channel within 15 days — not through luck, but through a deliberate creator-led growth strategy that combined content format selection, publishing cadence, and distribution thinking.</p>
-          <p class="result-context">Note: growth validated from actual campaign work. Channel name withheld for client privacy.</p>
+          <h3>3.2x ROAS</h3>
+          <p>Average return on ad spend achieved on Meta Ads campaigns for Enrich Money — a WealthTech and trading platform. Budget managed: ₹1.5 lakh per month, with targeting optimised for retail investors and traders.</p>
+          <p class="result-context">Meta Ads · Enrich Money · Dec 2025 – Present</p>
         </div>
 
         <div class="result-card reveal">
-          <h3>Conversions</h3>
-          <p>Achieved measurable conversions from the content growth — not just reach. Views were converted into action through aligned call-to-actions and a clear post-click journey.</p>
+          <h3>15,000+</h3>
+          <p>Newsletter subscribers on 'The Chai Break With Mayank' — a daily finance newsletter with a 35% open rate. Built from scratch through consistent publishing and distribution strategy.</p>
+          <p class="result-context">Newsletter Marketing · Ongoing</p>
         </div>
 
         <div class="result-card reveal">
-          <h3>Full Funnel</h3>
-          <p>Managed acquisition to retention across paid and organic — Google Ads, Meta, and WebEngage lifecycle campaigns running in parallel on the same brand.</p>
+          <h3>40,000+</h3>
+          <p>Post impressions across LinkedIn and social channels in just 3 months — driven by a structured content pipeline of 20 pieces per month including blogs, reels, and LinkedIn posts.</p>
+          <p class="result-context">Social Media · LinkedIn Growth · 3 months</p>
         </div>
 
         <div class="result-card reveal">
-          <h3>Finance Expertise</h3>
-          <p>Created finance content that builds trust, not just traffic. MBA in Finance means I understand the subject — which makes the content sharper and more credible than generalist writers.</p>
+          <h3>40% Growth</h3>
+          <p>LinkedIn page impression growth in 3 months at Enrich Money — achieved through consistent content output, format experimentation, and weekly performance tracking.</p>
+          <p class="result-context">LinkedIn · Content Strategy · Enrich Money</p>
         </div>
 
         <div class="result-card reveal">
-          <h3>Content → Business</h3>
-          <p>Strong track record of turning content output into business outcomes — not just publishing volume. Strategy, not just execution.</p>
+          <h3>15 Flows</h3>
+          <p>Automated user journey flows built on WebEngage covering onboarding, re-engagement, and retention — including push, email, and in-app touchpoints targeting dormant and active user segments.</p>
+          <p class="result-context">WebEngage · Lifecycle Marketing · Enrich Money</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>3 Campaigns</h3>
+          <p>Automated retention campaigns built on WebEngage specifically targeting dormant users — segmented by last activity and investment behaviour, with push, email, and in-app re-engagement flows.</p>
+          <p class="result-context">Retention Marketing · User Segmentation</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>20 Pieces/Month</h3>
+          <p>Consistent content pipeline managed every month — blogs, articles, newsletters, reels, and LinkedIn posts. Tracked weekly against KPIs including CTR, open rate, and engagement.</p>
+          <p class="result-context">Content Operations · Ongoing</p>
+        </div>
+
+        <div class="result-card reveal">
+          <h3>25% More Leads</h3>
+          <p>Contributed to a 25% increase in lead volume at Wogle Tech through Meta Ads campaign management targeting B2C segments — alongside A/B testing that improved CTR by 18%.</p>
+          <p class="result-context">Meta Ads · Wogle Tech · May–Oct 2025</p>
         </div>
 
       </div>
@@ -1365,98 +1489,98 @@
 
       <div class="case-grid">
 
-        <!-- CASE STUDY 1 — Edit all fields here -->
+        <!-- CASE STUDY 1 — WealthTech Retention Campaign -->
         <div class="case-card reveal">
           <div class="case-card-header">
             <p class="case-num">Case 01</p>
-            <h3>Finance Content Growth Campaign</h3>
-            <span class="case-type-tag">Content Strategy · Finance</span>
+            <h3>WealthTech Retention Campaign</h3>
+            <span class="case-type-tag">WebEngage · Retention Marketing</span>
           </div>
           <div class="case-card-body">
             <div>
               <p class="case-section-label">Problem</p>
-              <p>A finance brand had technically accurate content that wasn't gaining traction. Low engagement, low trust signals, and no clear narrative thread connecting their content to their core offer.</p>
+              <p>Dormant users not engaging after signup on a trading platform. Onboarding drop-offs were high and re-engagement had no automated structure in place.</p>
             </div>
             <div>
               <p class="case-section-label">Approach</p>
-              <p>Rebuilt the content framework around audience pain points rather than product features. Simplified financial concepts for a non-expert audience, introduced a consistent brand voice, and aligned content topics to search and purchase intent.</p>
+              <p>Built 3 automated WebEngage campaigns targeting dormant users. Designed push, email, and in-app flows for re-engagement. Segmented users by last activity and investment behaviour to personalise messaging at each touchpoint.</p>
             </div>
             <div>
               <p class="case-section-label">Outcome</p>
-              <p class="case-outcome-text">Improved content engagement and organic reach. Content began converting readers into enquiries — not just informing them. Trust signals strengthened across the brand touchpoints.</p>
+              <p class="case-outcome-text">Activated dormant user segments through targeted lifecycle flows. Improved retention engagement across onboarding and re-engagement journeys. 15 total lifecycle flows built and deployed.</p>
             </div>
           </div>
           <div class="case-card-footer">
             <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
             <div class="case-skills">
-              <span class="tag">Finance Content</span>
-              <span class="tag">Content Strategy</span>
-              <span class="tag">Brand Voice</span>
-              <span class="tag">SEO Thinking</span>
+              <span class="tag">WebEngage</span>
+              <span class="tag">Retention Marketing</span>
+              <span class="tag">User Segmentation</span>
+              <span class="tag">Lifecycle Marketing</span>
             </div>
           </div>
         </div>
 
-        <!-- CASE STUDY 2 — Edit all fields here -->
+        <!-- CASE STUDY 2 — Meta Ads Performance Campaign -->
         <div class="case-card reveal">
           <div class="case-card-header">
             <p class="case-num">Case 02</p>
-            <h3>Paid Ads & Conversion Improvement</h3>
-            <span class="case-type-tag">Google Ads · Meta Ads</span>
+            <h3>Meta Ads Performance Campaign</h3>
+            <span class="case-type-tag">Meta Ads · Performance Marketing</span>
           </div>
           <div class="case-card-body">
             <div>
               <p class="case-section-label">Problem</p>
-              <p>A brand was running paid campaigns with decent traffic but poor conversion rates. Ad spend was generating clicks that didn't result in meaningful business outcomes — a classic top-of-funnel trap.</p>
+              <p>High CAC and low quality leads from paid campaigns for a fintech brand. Budget was being spent on broad audiences with poor conversion intent.</p>
             </div>
             <div>
               <p class="case-section-label">Approach</p>
-              <p>Audited the full paid-to-landing-page journey. Tightened ad copy and audience targeting on Meta, restructured Google Search campaigns around purchase-intent keywords, and aligned landing page messaging with ad promises to reduce friction.</p>
+              <p>Managed Meta Ads campaigns with ₹1.5L/month budget. Ran A/B tests on ad creatives and copy to identify what resonated. Optimised targeting for retail investors and traders — audiences with genuine investment intent.</p>
             </div>
             <div>
               <p class="case-section-label">Outcome</p>
-              <p class="case-outcome-text">Improved conversion rate from paid traffic. More budget was redirected toward performing segments, improving overall ROAS without increasing total spend.</p>
+              <p class="case-outcome-text">Achieved consistent 3.2x ROAS. Reduced CAC while improving lead quality by focusing on investor-intent audiences. Ongoing optimisation cycle established with weekly reporting.</p>
             </div>
           </div>
           <div class="case-card-footer">
             <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
             <div class="case-skills">
-              <span class="tag">Google Ads</span>
               <span class="tag">Meta Ads</span>
-              <span class="tag">Conversion Optimisation</span>
-              <span class="tag">Ad Copy</span>
+              <span class="tag">A/B Testing</span>
+              <span class="tag">Campaign Optimisation</span>
+              <span class="tag">CAC Tracking</span>
             </div>
           </div>
         </div>
 
-        <!-- CASE STUDY 3 — Edit all fields here -->
+        <!-- CASE STUDY 3 — Finance Content Growth Sprint -->
         <div class="case-card reveal">
           <div class="case-card-header">
             <p class="case-num">Case 03</p>
-            <h3>Creator-Led Content Growth Sprint</h3>
-            <span class="case-type-tag">Content Growth · Distribution</span>
+            <h3>Finance Content Growth Sprint</h3>
+            <span class="case-type-tag">Content Strategy · Newsletter</span>
           </div>
           <div class="case-card-body">
             <div>
               <p class="case-section-label">Problem</p>
-              <p>A content channel needed rapid, sustainable growth without relying on paid amplification. Organic reach was flat, content wasn't being discovered, and there was no playbook for scaling views.</p>
+              <p>Low organic reach and engagement for a WealthTech brand on social. No consistent content pipeline, no newsletter, and no weekly performance tracking in place.</p>
             </div>
             <div>
               <p class="case-section-label">Approach</p>
-              <p>Developed a creator-led growth strategy — selecting high-potential content formats, building a consistent publishing cadence, and optimising each piece for platform-specific discovery. Distribution was treated as a discipline, not an afterthought.</p>
+              <p>Built a content pipeline of 20 pieces/month: blogs, reels, newsletters, and LinkedIn posts. Launched daily newsletter 'The Chai Break With Mayank'. Tracked performance weekly and iterated on formats based on engagement data.</p>
             </div>
             <div>
               <p class="case-section-label">Outcome</p>
-              <p class="case-outcome-text">1 million+ views achieved within 15 days. Growth was paired with conversion-focused content that turned views into tangible business outcomes — not just vanity numbers.</p>
+              <p class="case-outcome-text">Grew LinkedIn page impressions by 40% in 3 months. Newsletter hit 15K+ subscribers with 35% open rate. Generated 40K+ post impressions across channels.</p>
             </div>
           </div>
           <div class="case-card-footer">
             <p class="case-section-label" style="margin-bottom: 10px;">Skills Used</p>
             <div class="case-skills">
-              <span class="tag">Creator Strategy</span>
-              <span class="tag">Content Growth</span>
-              <span class="tag">Distribution</span>
-              <span class="tag">Format Strategy</span>
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Newsletter Marketing</span>
+              <span class="tag">LinkedIn Growth</span>
+              <span class="tag">Fintech Content</span>
             </div>
           </div>
         </div>
@@ -1523,7 +1647,7 @@
           <div class="skill-bar-list">
             <div class="skill-bar-item">
               <div class="skill-bar-top">
-                <span class="skill-bar-label">Google & Meta Ads</span>
+                <span class="skill-bar-label">Meta Ads & Performance</span>
                 <span class="skill-bar-pct">90%</span>
               </div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
@@ -1537,14 +1661,14 @@
             </div>
             <div class="skill-bar-item">
               <div class="skill-bar-top">
-                <span class="skill-bar-label">Content Writing</span>
+                <span class="skill-bar-label">Newsletter Marketing</span>
                 <span class="skill-bar-pct">95%</span>
               </div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
             </div>
             <div class="skill-bar-item">
               <div class="skill-bar-top">
-                <span class="skill-bar-label">Finance Content</span>
+                <span class="skill-bar-label">Fintech & Finance Content</span>
                 <span class="skill-bar-pct">88%</span>
               </div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
@@ -1552,16 +1676,32 @@
             <div class="skill-bar-item">
               <div class="skill-bar-top">
                 <span class="skill-bar-label">WebEngage / Retention</span>
-                <span class="skill-bar-pct">80%</span>
+                <span class="skill-bar-pct">85%</span>
               </div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
             </div>
             <div class="skill-bar-item">
               <div class="skill-bar-top">
-                <span class="skill-bar-label">Growth Strategy</span>
+                <span class="skill-bar-label">Growth Marketing</span>
                 <span class="skill-bar-pct">87%</span>
               </div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);">
+            <p class="why-visual-label" style="margin-bottom: 14px;">Expertise Tags</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <span class="tag">Meta Ads</span>
+              <span class="tag">WebEngage</span>
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Fintech Marketing</span>
+              <span class="tag">Newsletter Marketing</span>
+              <span class="tag">Retention Marketing</span>
+              <span class="tag">Cohort Analysis</span>
+              <span class="tag">CAC Optimisation</span>
+              <span class="tag">Growth Marketing</span>
+              <span class="tag">Social Media Marketing</span>
             </div>
           </div>
         </div>
@@ -1643,6 +1783,72 @@
   <div class="divider"></div>
 
   <!-- ============================================================
+       EXPERIENCE & EDUCATION SECTION
+  ============================================================ -->
+  <section id="experience">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <p class="section-label">Experience</p>
+        <h2 class="display-lg">Where I've built<br />real results.</h2>
+      </div>
+
+      <div class="experience-grid">
+
+        <div class="exp-card reveal">
+          <div class="exp-card-header">
+            <p class="exp-company">Enrich Money</p>
+            <p class="exp-role">Digital Marketing Executive</p>
+            <p class="exp-period">Dec 2025 – Present &nbsp;·&nbsp; Bengaluru, India</p>
+          </div>
+          <ul class="exp-list">
+            <li>Manage end-to-end content pipeline: 20 blogs, articles, newsletters, and social posts per month</li>
+            <li>Run Meta Ads campaigns with ₹1.5L/month budget, achieving avg. 3.2x ROAS</li>
+            <li>Built 15 automated user journey flows on WebEngage for onboarding, re-engagement, and retention</li>
+            <li>Grew LinkedIn page impressions by 40% in 3 months</li>
+            <li>Run daily newsletter 'The Chai Break With Mayank' — 15K+ subscribers, 35% open rate</li>
+            <li>Track KPIs including CAC, DAU, retention rates, email CTR, and campaign ROI weekly</li>
+          </ul>
+        </div>
+
+        <div class="exp-card reveal">
+          <div class="exp-card-header">
+            <p class="exp-company">Wogle Tech</p>
+            <p class="exp-role">Business Development Intern — Performance Marketing</p>
+            <p class="exp-period">May 2025 – Oct 2025 &nbsp;·&nbsp; Bengaluru, India</p>
+          </div>
+          <ul class="exp-list">
+            <li>Managed Meta Ads campaigns targeting B2C segments, contributing to 25% increase in lead volume</li>
+            <li>Ran A/B tests on ad creatives and copy, improving CTR by 18%</li>
+            <li>Researched and identified 50+ potential business partnerships</li>
+            <li>Supported content creation for paid social campaigns</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Education -->
+      <div style="margin-top: 40px;">
+        <p class="section-label" style="margin-bottom: 20px;">Education</p>
+        <div class="edu-card reveal">
+          <div class="edu-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="edu-content">
+            <h4>Lovely Professional University (LPU)</h4>
+            <p>MBA — Finance &amp; Marketing &nbsp;·&nbsp; 2023 – 2025</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================
        CONTACT SECTION
        EDIT: headline, subtext, email, LinkedIn URL, form fields
   ============================================================ -->
@@ -1654,7 +1860,7 @@
         <div class="reveal">
           <p class="section-label">Contact</p>
           <h2 class="display-lg" style="margin-bottom: 16px;">Got a project?<br />Let's talk.</h2>
-          <p>I'm available for freelance engagements — one-off projects, ongoing retainers, and strategy consultations. If you're a founder, startup, finance brand, or personal brand looking for sharp, conversion-focused marketing, send me a note.</p>
+          <p>Currently open to freelance projects and full-time growth roles in WealthTech and Fintech. If you're building in the finance or trading space and need someone who understands both the numbers and the narrative — send me a note.</p>
 
           <!-- EDIT: Contact links — email and LinkedIn -->
           <div class="contact-links">
